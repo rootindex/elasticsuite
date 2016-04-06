@@ -38,7 +38,7 @@
         "smile-sa/module-elasticsuite-catalog": "self.version",
         "smile-sa/module-elasticsuite-swatches": "self.version",
         "smile-sa/module-elasticsuite-thesaurus": "self.version",
-        "smile-sa/module-elasticsuite-catalog-rule": "self.version",
+        "smile-sa/module-elasticsuite-catalog-rule": "self.version"
     },
     "require-dev": {
         "phpunit/phpunit": "*",
