@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Smile_ElasticSuiteCatalogRule module loading configuration.
+ * Smile_ElasticSuiteVirtualCategory module loading configuration.
  *
  * DISCLAIMER
  *
@@ -21,6 +21,7 @@
         <sequence>
             <module name="Smile_ElasticSuiteCatalogRule" />
             <module name="Magento_Rule" />
+            <module name="Magento_CatalogWidget" />
         </sequence>
     </module>
 </config>
