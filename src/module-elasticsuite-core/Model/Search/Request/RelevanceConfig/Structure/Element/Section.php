@@ -16,7 +16,7 @@ use Magento\Config\Model\Config\Structure\Element\Iterator;
 use Magento\Framework\AuthorizationInterface;
 use Magento\Framework\Module\Manager;
 use Magento\Store\Model\StoreManagerInterface;
-use Smile\ElasticSuiteCore\Model\Search\Request\RelevanceConfig\Structure\Element\Section\Visibility;
+use Smile\ElasticSuiteCore\Model\Search\Request\RelevanceConfig\Structure\Element\Section\Visibility as SmileVisibility;
 
 /**
  * Relevance configuration section model
@@ -39,14 +39,14 @@ class Section extends \Magento\Config\Model\Config\Structure\Element\Section
      * @param Manager                $moduleManager    The module manager
      * @param Iterator               $childrenIterator The children iterator
      * @param AuthorizationInterface $authorization    The authorization manager
-     * @param Visibility             $visibility       The visibility manager
+     * @param SmileVisibility        $visibility       The visibility manager
      */
     public function __construct(
         StoreManagerInterface $storeManager,
         Manager $moduleManager,
         Iterator $childrenIterator,
         AuthorizationInterface $authorization,
-        Visibility $visibility
+        SmileVisibility $visibility
     ) {
         parent::__construct($storeManager, $moduleManager, $childrenIterator, $authorization);
         $this->visibility = $visibility;
