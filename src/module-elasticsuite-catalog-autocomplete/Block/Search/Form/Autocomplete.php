@@ -46,27 +46,24 @@ class Autocomplete extends \Magento\Framework\View\Element\Template
     private $storeManager;
 
     /**
-     * Mini constructor.
-     *
-     * @param \Magento\Framework\View\Element\Template\Context $context      Block context
-     * @param \Magento\Framework\Json\Helper\Data              $jsonHelper   JSON helper
-     * @param \Magento\Framework\Locale\FormatInterface        $localeFormat Locale Format
-     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param array                                            $data         The data
-     * @param array                                            $rendererList The renderers used for autocomplete rendering
+     * Autocomplete constructor.
+     * @param \Magento\Framework\View\Element\Template\Context $context
+     * @param \Magento\Framework\Json\Helper\Data $jsonHelper
+     * @param FormatInterface $localeFormat
+     * @param array $data
+     * @param array $rendererList
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Framework\Json\Helper\Data $jsonHelper,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
         FormatInterface $localeFormat,
         array $data,
         array $rendererList = []
     ) {
-        $this->jsonHelper   = $jsonHelper;
+        $this->jsonHelper = $jsonHelper;
         $this->localeFormat = $localeFormat;
         $this->rendererList = $rendererList;
-        $this->storeManager = $storeManager;
+        $this->storeManager = $context->getStoreManager();
 
         parent::__construct($context, $data);
     }
@@ -78,18 +75,10 @@ class Autocomplete extends \Magento\Framework\View\Element\Template
      */
     public function getUrl($route = '', $params = [])
     {
-        if ($this->isCurrentlySecure()) {
+        if ($this->_storeManager->getStore()->isCurrentlySecure()) {
             $params['_secure'] = true;
         }
         return parent::getUrl($route, $params);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function isCurrentlySecure()
-    {
-        return $this->_storeManager->getStore()->isCurrentlySecure();
     }
 
     /**
